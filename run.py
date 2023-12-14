@@ -106,25 +106,25 @@ def main():
             server_list, local_ip)
 
         if fastest_server is not None:
-            print(f"Fastest server in first time response: {fastest_server}")
+            print(f"Fastest server in first time checks: {fastest_server}")
             print(f"Response time: {fastest_response_time} ms")
 
         # Slower in first time test
         if slowest_server is not None:
-            print(f"Second fastest server in first time response: {slowest_server}")
+            print(f"Slower server in first time checks: {slowest_server}")
             print(f"Response time: {slowest_response_time} ms")
 
         if len(server_list) >= 2:
             server_list.remove(fastest_server)
             second_fastest_server, second_fastest_response_time, _, _ = find_fastest_and_slowest_servers(server_list,
                                                                                                          local_ip)
-            print(f"Third test fastest server (exclude first server): {second_fastest_server}")
+            print(f"Fastest server from second checks (exclude first server): {second_fastest_server}")
             print(f"Response time: {second_fastest_response_time} ms")
 
         # print("\nStatistics for the remaining servers (sorted by response time):")
         # sorted_servers = sorted(server_list, key=lambda x: check_ping(x) if check_ping(x) is not None else float(
         # 'inf'))
-        print("\nStatistics for the remaining servers (sorted by response time):")
+        print("\nStatistics for the remaining servers (sorted by response time from third checks):")
         sorted_servers = sorted([(server, check_ping(server)) for server in server_list],
                                 key=lambda x: x[1] or float('inf'))
         for server, response_time in sorted_servers:
