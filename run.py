@@ -106,18 +106,19 @@ def main():
             server_list, local_ip)
 
         if fastest_server is not None:
-            print(f"Fastest server: {fastest_server}")
+            print(f"Fastest server in first time response: {fastest_server}")
             print(f"Response time: {fastest_response_time} ms")
 
+        # Slower in first time test
         if slowest_server is not None:
-            print(f"Slowest server: {slowest_server}")
+            print(f"Second fastest server in first time response: {slowest_server}")
             print(f"Response time: {slowest_response_time} ms")
 
         if len(server_list) >= 2:
             server_list.remove(fastest_server)
             second_fastest_server, second_fastest_response_time, _, _ = find_fastest_and_slowest_servers(server_list,
                                                                                                          local_ip)
-            print(f"Second fastest server: {second_fastest_server}")
+            print(f"Third test fastest server (exclude first server): {second_fastest_server}")
             print(f"Response time: {second_fastest_response_time} ms")
 
         # print("\nStatistics for the remaining servers (sorted by response time):")
